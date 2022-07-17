@@ -39,8 +39,14 @@ the_post(); ?>
       ?>
 
   
+      <?php 
       
+      $testArray = get_pages(array(
 
+        'child_of' => get_the_ID()
+      ));
+      
+      if ($theParent or $testArray ) { ?>
       <div class="page-links">
         <h2 class="page-links__title"><a href="<?php echo get_permalink($theParent); ?>"><?php 
         echo get_the_title($theParent)
@@ -58,11 +64,14 @@ the_post(); ?>
         wp_list_pages(array(
          "title_li" => NULL,
          'child_of' => $findChildrenOf
+         "sort_column" => 'menu_order'
         ));
         
         ?>
         </ul>
       </div>
+
+      <?php } ?>
 
   
 
